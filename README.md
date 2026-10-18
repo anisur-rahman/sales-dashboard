@@ -193,18 +193,28 @@ If the job uses Apollo, the ideas (query, variables, loading/error, refetch) are
 
 ---
 
-## 7. Practice exercises
+## 7 Roadmap
 
-Start with the first ones; each builds a skill from the job description.
+Planned improvements. Checked items are done.
 
-1. **GraphQL field:** add `description: String` to `Product` in `schema.js`, add text in `data.js`, request it in `PRODUCT_DETAIL_QUERY`, and show it on the detail page.
-2. **New query:** add `topCustomers(limit: Int): [CustomerSales!]!` to the server and a card for it on the Dashboard.
-3. **Sorting:** let users sort `ProductTable` by price or stock by clicking a column header (use `computed`).
-4. **Pinia:** move the Products search and category into the store so they persist between pages.
-5. **Mutation:** add `createProduct(input: ProductInput!)` with a form, using an `input` type in the schema.
-6. **Responsive:** make the KPI cards show two per row on phones.
-7. **Tableau:** find another dashboard on public.tableau.com and set it in `client/.env`. Then add a filter button using the Embedding API's `applyFilterAsync`.
-8. **Cross-browser:** open the app in Safari and Chrome, and in Chrome DevTools try iPhone and iPad sizes. Note anything that differs.
+### GraphQL API
+- [ ] Add a `description` field to products and show it on the product page
+- [ ] Add a `topCustomers` query with a matching dashboard card
+- [ ] Add a `createProduct` mutation with an input type and a form
+
+### UI and UX
+- [ ] Sortable product table (price, stock)
+- [ ] Two-column KPI cards on phones
+
+### State management
+- [ ] Keep product search and category filters in Pinia across pages
+
+### Tableau
+- [ ] Add a filter control using the Embedding API's `applyFilterAsync`
+
+### Quality
+- [ ] Cross-browser testing on Safari, Chrome, Firefox and Edge
+- [ ] Responsive testing on phone and tablet sizes
 
 ---
 
