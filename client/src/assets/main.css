@@ -1,0 +1,268 @@
+/* =========================================================================
+   Global styles
+   - Design tokens as CSS variables (one place to change colors/spacing)
+   - Mobile-first: base styles target phones; @media (min-width) adds desktop
+   - Dark mode via prefers-color-scheme
+   ========================================================================= */
+
+:root {
+  /* Colors */
+  --color-bg: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-border: #e3e6ef;
+  --color-text: #1c2033;
+  --color-muted: #646b85;
+  --color-primary: #4f46e5;
+  --color-primary-soft: #eef0ff;
+  --color-success: #0f8a5f;
+  --color-success-soft: #e3f6ee;
+  --color-warning: #b45309;
+  --color-warning-soft: #fdf1e0;
+  --color-danger: #c62f43;
+  --color-danger-soft: #fde8eb;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Typography: system fonts look native on every OS/browser */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  /* clamp() = fluid size: min, preferred, max */
+  --text-xl: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(20, 24, 50, 0.06), 0 2px 8px rgba(20, 24, 50, 0.04);
+  --sidebar-width: 232px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1220;
+    --color-surface: #171b2e;
+    --color-border: #272c45;
+    --color-text: #e8eaf4;
+    --color-muted: #9aa1bd;
+    --color-primary: #8b85ff;
+    --color-primary-soft: #23264a;
+    --color-success: #4fd1a1;
+    --color-success-soft: #14302a;
+    --color-warning: #f5b454;
+    --color-warning-soft: #33281a;
+    --color-danger: #ff7a8c;
+    --color-danger-soft: #3a1d25;
+    --shadow: none;
+  }
+}
+
+/* Reset: consistent starting point across browsers */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* stop iOS Safari from resizing text */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Visible focus ring for keyboard users (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hide visually but keep for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Reusable building blocks ---------- */
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.page-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+}
+
+.card-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+/* Responsive grid: as many columns as fit, each at least 220px wide.
+   No media queries needed. */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Two-column layout on wide screens, one column on phones */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  .grid-2 {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.input,
+.select {
+  min-height: 40px; /* comfortable touch target on phones */
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-base); /* 16px+ prevents iOS zoom on focus */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-success {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.badge-warning {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.badge-danger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.badge-info {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Respect users who turn off animations in their OS settings */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
