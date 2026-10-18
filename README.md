@@ -208,15 +208,4 @@ Start with the first ones; each builds a skill from the job description.
 
 ---
 
-## 8. Likely interview questions this project helps you answer
 
-- `ref` vs `reactive`? → `ref` everywhere here; `.value` in script, unwrapped in templates.
-- `computed` vs `watch`? → `computed` derives values (KPIs, chart bars); `watch` runs side effects (re-fetching, syncing the URL, debouncing).
-- How do components communicate? → props down (`KpiCard`), events up (`RegionBreakdown` emits `select`), shared state in Pinia, `defineExpose` + template ref (`TableauEmbed.reset`).
-- What is a composable? → `useQuery` / `useMutation`: reusable stateful logic, the Vue 3 replacement for mixins.
-- GraphQL vs REST? → one endpoint, exact fields, nested data in one round trip, strongly typed schema. Downsides: caching is harder, and errors come back with HTTP 200.
-- How do you handle loading and error states? → `StatusMessage.vue`, with retry.
-- How do you avoid stale responses? → `useQuery` ignores responses from older requests (`requestId`).
-- How do you embed Tableau in Vue? → `TableauEmbed.vue` + `isCustomElement` in `vite.config.js`.
-- How do you make a table responsive? → `ProductTable.vue`.
-- How do you make a layout responsive without many media queries? → `auto-fit` + `minmax()`, `flex-wrap`, `clamp()`.
