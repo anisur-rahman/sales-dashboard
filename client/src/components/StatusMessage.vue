@@ -1,6 +1,6 @@
 <script setup>
 // One component for the three states every data screen needs:
-// loading, error, and empty. Interviewers look for this.
+// loading, error, and empty.
 defineProps({
   loading: Boolean,
   error: { type: String, default: null },
