@@ -5,8 +5,8 @@
 // The response is always:
 //   { "data": { ... }, "errors": [ ... ] }   (errors only when something failed)
 //
-// In larger projects you'd often use Apollo Client or urql instead, which add
-// caching and devtools. Knowing how it works underneath helps in interviews.
+// In larger projects you'd often use Apollo Client or urql instead, which add.
+
 
 const ENDPOINT = import.meta.env.VITE_GRAPHQL_URL || '/graphql'
 

@@ -1,0 +1,9 @@
+# Query: interview
+# ContextLines: 1
+
+1 result - 1 file
+
+client/src/components/StatusMessage.vue:
+  2  // One component for the three states every data screen needs:
+  3: // loading, error, and empty.
+  4  defineProps({

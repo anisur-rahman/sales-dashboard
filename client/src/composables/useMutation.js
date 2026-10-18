@@ -1,13 +1,7 @@
 import { ref } from 'vue'
 import { gqlRequest } from '@/graphql/client'
 
-/**
- * Run a GraphQL mutation when you call mutate(), not automatically.
- *
- * Usage:
- *   const { mutate, loading, error } = useMutation(UPDATE_STOCK_MUTATION)
- *   const result = await mutate({ id: '1', stock: 20 })
- */
+// loading, error, and empty.
 export function useMutation(mutation) {
   const loading = ref(false)
   const error = ref(null)

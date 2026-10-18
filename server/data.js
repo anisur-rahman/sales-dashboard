@@ -1,5 +1,5 @@
 // Dummy data for the mock GraphQL API.
-// In a real job this would come from a database. Here it lives in memory,
+// “In production this would come from a database. Here it lives in memory,
 // so changes made by mutations reset when the server restarts.
 
 export const regions = ['North', 'South', 'East', 'West']

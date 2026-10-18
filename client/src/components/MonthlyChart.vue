@@ -2,8 +2,7 @@
 import { computed } from 'vue'
 import { formatCurrency } from '@/utils/format'
 
-// A bar chart built with plain HTML/CSS (no chart library), so you can see
-// exactly how data becomes layout. Bar height = value / max value.
+// A lightweight bar chart in plain HTML/CSS, with no chart library dependency.
 const props = defineProps({
   data: { type: Array, required: true } // [{ month, revenue }]
 })
